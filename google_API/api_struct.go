@@ -1,7 +1,7 @@
 package google_API
 
 type GoogleRouteResponse struct {
-	Legs []*Leg `json:"legs"`
+	Legs []Leg `json:"legs"`
 }
 type Leg struct {
 	Steps         []Steps       `json:"steps"`
