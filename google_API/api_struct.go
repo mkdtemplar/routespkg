@@ -35,10 +35,6 @@ type Location struct {
 	Lat float64 `json:"lat"`
 	Lng float64 `json:"lng"`
 }
-type EndLocation struct {
-	Lat float64 `json:"lat"`
-	Lng float64 `json:"lng"`
-}
 type Duration struct {
 	Value int    `json:"value"`
 	Text  string `json:"text"`
