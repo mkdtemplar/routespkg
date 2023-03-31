@@ -2,12 +2,16 @@ package google_API
 
 import (
 	"context"
+	"routespkg/root"
 
 	"googlemaps.github.io/maps"
 )
 
 func (cl *ClientData) FindRoute() ([]Route, error) {
-	var apiKey = ""
+	apiKey, err := root.GetEnvVar("API_KEY")
+	if err != nil {
+		return nil, err
+	}
 
 	c, err := maps.NewClient(maps.WithAPIKey(apiKey))
 	if err != nil {
