@@ -2,6 +2,7 @@ package google_API
 
 import (
 	"context"
+	"fmt"
 
 	"googlemaps.github.io/maps"
 )
@@ -23,6 +24,22 @@ func (cl *ClientData) FindRoute() ([]Route, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	for i, j := range ToRoutes(routes) {
+		fmt.Println("Total Distance: ", j.Legs[i].Distance)
+		legs := ToLegs(routes[i].Legs)
+		fmt.Println("Printing legs: ", legs[i].Distance)
+		fmt.Println("-----------------------")
+		for k := range legs {
+			steps := ToSteps(routes[i].Legs[k].Steps)
+			for _, n := range steps {
+				fmt.Println("Steps: ", n.Distance.Text)
+				fmt.Println("Time: ", n.Duration)
+			}
+		}
+	}
+	fmt.Println("Total distance: ", ToRoutes(routes)[0].Legs[0].Distance.Value)
+
 	return ToRoutes(routes), nil
 }
 
